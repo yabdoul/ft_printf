@@ -30,6 +30,11 @@ int handle_format(const char *s, va_list p )
         count  += ft_putstr(va_arg(p, char *));
         i = i + 2;
       }
+      else if(s[i+ 1 ] == 'X' )
+      {
+         count  += ft_tohexa(va_arg(p, int) , 1);
+        i = i + 2;
+      } 
     }
     else
     {

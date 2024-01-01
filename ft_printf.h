@@ -12,4 +12,5 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *s);
 int ft_printf(const char *first, ...);
 int ft_putstr(char *s);
+void ft_tohexa(int c , int type );
 #endif 
