@@ -1,22 +1,20 @@
-#include "ft_printf.c"
-void ft_tohexa(int c , int type )
-{
-    char tab[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'}; 
-    char tabmin[] =  {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'} ; 
-    char result[65] ; 
-    int tmp =  c ; 
-    int index  = 0 ; 
-    int rem  = 0 ; 
-   while(tmp !=0)
+#include "ft_printf.h"
+int ft_tohexa(unsigned long c, int type) {
+    char tab[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+    char tabmin[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+    int count =0;
+
+    if (c >= 16) {
+         count+=ft_tohexa(c /16, type);
+        count+=ft_tohexa(c % 16, type);
+    } 
+    if (c < 16)
     {
-        rem = tmp % 16 ; 
-        if(type == 1) 
-        result[index] = tab[rem];
-        else if (type == 2 )
-        result[index] = tabmin[rem];
-        tmp /= 16;
-        index++;
+        if (type == 1) {
+           count += ft_putchar(tab[c]);
+        } else if (type == 2) {
+            count+= ft_putchar(tabmin[c]);
+        }
     }
-    result[index] = '\0';
-    ft_putstr(result) ; 
+    return count;
 }
