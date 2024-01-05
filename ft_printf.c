@@ -37,15 +37,15 @@ int ft_printf(const char *first, ...)
   int  i = 0 ;
   int printed_chars = 0;
   va_start(p, first);
-  while (s[i])
+  while (first[i])
   {
-    if (s[i] == '%')
+    if (first[i] == '%')
     {
-     printed_chars += handle_format(first, p);
+     printed_chars += handle_format(first+i, p);
       i = i + 2;
     }
      else
-      count += ft_putchar(s[i++]);
+          printed_chars +=  ft_putchar(first[i++]);
   }
   va_end(p);
   return printed_chars;
